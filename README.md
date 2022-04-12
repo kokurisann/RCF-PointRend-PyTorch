@@ -5,9 +5,6 @@
 Thanks to Li Liang's help.
 The best result of my pytorch model is 0.783 ODS F-score now.
 
-#### My model
-
-![](C:\Users\song\Documents\Tencent Files\492613337\FileRecv\RCF_new.jpg)
 
 ### Introduction
 
@@ -33,9 +30,9 @@ To train a RCF-PointRend model on BSDS500:
 
 To resume the training on BSDS500:
 
-```
+
 	python train_RCF_PointRend.py --checkpoint '[.pth file]'
-```
+
 
 If you have multiple GPUs on your machine, you can also run the multi-GPU version training:
 
