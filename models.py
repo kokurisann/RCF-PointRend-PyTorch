@@ -43,21 +43,15 @@ class RCF(nn.Module):
         self.conv4_1 = nn.Conv2d(256, 512, 3, padding=1)
         self.conv4_2 = nn.Conv2d(512, 512, 3, padding=1)
         self.conv4_3 = nn.Conv2d(512, 512, 3, padding=1)
+        
         # lr 100 200 decay 1 0
-        # self.conv5_1 = nn.Conv2d(512, 512, 3, padding=1)
-        # self.conv5_2 = nn.Conv2d(512, 512, 3, padding=1)
-        # self.conv5_3 = nn.Conv2d(512, 512, 3, padding=1)
-
-        # self.conv5_1 = DilateConv(d_rate=2, in_ch=512, out_ch=512) # error ! name conv5_1.dconv.weight erro in load vgg16
-        # self.conv5_2 = DilateConv(d_rate=2, in_ch=512, out_ch=512)
-        # self.conv5_3 = DilateConv(d_rate=2, in_ch=512, out_ch=512)
-
         self.conv5_1 = nn.Conv2d(512, 512, kernel_size=3,
                                  stride=1, padding=2, dilation=2)
         self.conv5_2 = nn.Conv2d(512, 512, kernel_size=3,
                                  stride=1, padding=2, dilation=2)
         self.conv5_3 = nn.Conv2d(512, 512, kernel_size=3,
                                  stride=1, padding=2, dilation=2)
+        
         self.relu = nn.ReLU()
         self.maxpool = nn.MaxPool2d(2, stride=2, ceil_mode=True)
         self.maxpool4 = nn.MaxPool2d(2, stride=1, ceil_mode=True)
@@ -87,6 +81,7 @@ class RCF(nn.Module):
         self.score_dsn3 = nn.Conv2d(21, 1, 1)
         self.score_dsn4 = nn.Conv2d(21, 1, 1)
         self.score_dsn5 = nn.Conv2d(21, 1, 1)
+        
         # lr 0.001 0.002 decay 1 0
         self.score_final = nn.Conv2d(5, 1, 1)
 
@@ -191,18 +186,6 @@ class RCF(nn.Module):
         so3 = crop(upsample3, img_H, img_W)
         so4 = crop(upsample4, img_H, img_W)
         so5 = crop(upsample5, img_H, img_W)
-        ### crop way suggested by liu
-        # so1 = crop_caffe(0, so1, img_H, img_W)
-        # so2 = crop_caffe(1, upsample2, img_H, img_W)
-        # so3 = crop_caffe(2, upsample3, img_H, img_W)
-        # so4 = crop_caffe(4, upsample4, img_H, img_W)
-        # so5 = crop_caffe(8, upsample5, img_H, img_W)
-        ## upsample way
-        # so1 = F.upsample_bilinear(so1, size=(img_H,img_W))
-        # so2 = F.upsample_bilinear(so2, size=(img_H,img_W))
-        # so3 = F.upsample_bilinear(so3, size=(img_H,img_W))
-        # so4 = F.upsample_bilinear(so4, size=(img_H,img_W))
-        # so5 = F.upsample_bilinear(so5, size=(img_H,img_W))
 
         fusecat = torch.cat((so1, so2, so3, so4, so5), dim=1)
         fuse = self.score_final(fusecat)
