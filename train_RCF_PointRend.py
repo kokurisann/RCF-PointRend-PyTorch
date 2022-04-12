@@ -181,21 +181,6 @@ def main():
         ], lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
     scheduler = lr_scheduler.StepLR(optimizer, step_size=args.stepsize, gamma=args.gamma)
 
-
-    # optimizer = torch.optim.Adam([
-    #         {'params': net_parameters_id['conv1-4.weight']      , 'lr': args.lr*1    , 'weight_decay': args.weight_decay},
-    #         {'params': net_parameters_id['conv1-4.bias']        , 'lr': args.lr*2    , 'weight_decay': 0.},
-    #         {'params': net_parameters_id['conv5.weight']        , 'lr': args.lr*100  , 'weight_decay': args.weight_decay},
-    #         {'params': net_parameters_id['conv5.bias']          , 'lr': args.lr*200  , 'weight_decay': 0.},
-    #         {'params': net_parameters_id['conv_down_1-5.weight'], 'lr': args.lr*0.1  , 'weight_decay': args.weight_decay},
-    #         {'params': net_parameters_id['conv_down_1-5.bias']  , 'lr': args.lr*0.2  , 'weight_decay': 0.},
-    #         {'params': net_parameters_id['score_dsn_1-5.weight'], 'lr': args.lr*0.01 , 'weight_decay': args.weight_decay},
-    #         {'params': net_parameters_id['score_dsn_1-5.bias']  , 'lr': args.lr*0.02 , 'weight_decay': 0.},
-    #         {'params': net_parameters_id['score_final.weight']  , 'lr': args.lr*0.001, 'weight_decay': args.weight_decay},
-    #         {'params': net_parameters_id['score_final.bias']    , 'lr': args.lr*0.002, 'weight_decay': 0.},
-    #     ], lr=args.lr, betas=(0.9, 0.99), weight_decay=args.weight_decay)
-    # scheduler = lr_scheduler.StepLR(optimizer, step_size=args.stepsize, gamma=args.gamma)
-    
     # log
     log = Logger(join(TMP_DIR, '%s-%d-log.txt' %('sgd',args.lr)))
     sys.stdout = log
@@ -299,7 +284,6 @@ def test(model, test_loader, epoch, test_list, save_dir):
         result = Image.fromarray((result * 255).astype(np.uint8))
         result.save(join(save_dir, "%s.png" % filename))
         print("Running test [%d/%d]" % (idx + 1, len(test_loader)))
-# torch.nn.functional.upsample(input, size=None, scale_factor=None, mode='nearest', align_corners=None)
 def multiscale_test(model, test_loader, epoch, test_list, save_dir):
     model.eval()
     if not isdir(save_dir):
@@ -318,8 +302,6 @@ def multiscale_test(model, test_loader, epoch, test_list, save_dir):
             fuse = cv2.resize(result, (W, H), interpolation=cv2.INTER_LINEAR)
             multi_fuse += fuse
         multi_fuse = multi_fuse / len(scale)
-        ### rescale trick suggested by jiangjiang
-        # multi_fuse = (multi_fuse - multi_fuse.min()) / (multi_fuse.max() - multi_fuse.min())
         filename = splitext(test_list[idx])[0]
         result_out = Image.fromarray(((1-multi_fuse) * 255).astype(np.uint8))
         result_out.save(join(save_dir, "%s.jpg" % filename))
@@ -329,7 +311,6 @@ def multiscale_test(model, test_loader, epoch, test_list, save_dir):
 
 def weights_init(m):
     if isinstance(m, nn.Conv2d):
-        # xavier(m.weight.data)
         m.weight.data.normal_(0, 0.01)
         if m.weight.data.shape == torch.Size([1, 5, 1, 1]):
             # for new_score_weight
