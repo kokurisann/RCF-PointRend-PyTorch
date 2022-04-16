@@ -18,7 +18,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from data_loader import BSDS_RCFLoader
-from models import RCF
+from models import RCF_PointRend
 from functions import  cross_entropy_loss_RCF, SGD_caffe
 from torch.utils.data import DataLoader, sampler
 from utils import Logger, Averagvalue, save_checkpoint, load_vgg16pretrain
@@ -82,7 +82,7 @@ def main():
     assert len(test_list) == len(test_loader), "%d vs %d" % (len(test_list), len(test_loader))
 
     # model
-    model = RCF()
+    model = RCF_PointRend()
     model.cuda()
     model.apply(weights_init)
     # load_vgg16pretrain(model)
