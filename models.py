@@ -26,9 +26,9 @@ class DilateConv(nn.Module):
         return self.d_conv(x)
 
 
-class RCF(nn.Module):
+class RCF_PointRend(nn.Module):
     def __init__(self):
-        super(RCF, self).__init__()
+        super(RCF_PointRend, self).__init__()
         # lr 1 2 decay 1 0
         self.conv1_1 = nn.Conv2d(3, 64, 3, padding=1)
         self.conv1_2 = nn.Conv2d(64, 64, 3, padding=1)
