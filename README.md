@@ -12,8 +12,8 @@ The result of my pytorch model will be released in the future
 
 | Method        | ODS F-score on BSDS500 dataset |
 | :------------ | :----------------------------: |
-| RCF-PointRend |             0.808              |
-| RCF-MS        |             0.811              |
+| RCF-PointRend |             0.807              |
+| RCF           |             0.806              |
 
 
 ### Installation
@@ -42,5 +42,6 @@ If you have multiple GPUs on your machine, you can also run the multi-GPU versio
 
 *  To download the pretrained model, please click https://drive.google.com/open?id=1TupHeoBKawrniDka0Hc64m3BG4OKG8nM (This pretrained model is not the best model, just for communicating)
 *  To download the vgg16 pretrained model which is used for the backbone. please click https://drive.google.com/file/d/1lUhPKKj-BSOH7yQL0mOIavvrUbjydPp5/view?usp=sharing.
-*  To download the HED-BSDS_PASCAL dataset. Please click https://pan.baidu.com/s/13be7JVWzbup_h-04axRrSw (Access Code: 2nzk).
+*  To download the HED-BSDS dataset. Please click https://pan.baidu.com/s/13be7JVWzbup_h-04axRrSw (Access Code: 2nzk) or https://vcl.ucsd.edu/hed/HED-BSDS.tar.
+*  To download the BSDS500 dataset. Please click https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.html.
 *  To evaluate the model, you can learn more information in https://www.jianshu.com/p/eda277063867.
