@@ -2,7 +2,7 @@ Please put dataset here.
 
 If you want to reproduce our experimental results, please make the file structure as follows:
 data
-  --HED_BSDS_PASCAL
+  --HED-BSDS_PASCAL
     --train
     --test
     --bsds_pascal_train_pair.lst
