@@ -40,8 +40,9 @@ If you have multiple GPUs on your machine, you can also run the multi-GPU versio
 
 ### Source：
 
-*  To download the pretrained model, please click https://drive.google.com/open?id=1TupHeoBKawrniDka0Hc64m3BG4OKG8nM (This pretrained model is not the best model, just for communicating)
-*  To download the vgg16 pretrained model which is used for the backbone. please click https://drive.google.com/file/d/1lUhPKKj-BSOH7yQL0mOIavvrUbjydPp5/view?usp=sharing.
+*  To download the pretrained model. Please click https://drive.google.com/open?id=1TupHeoBKawrniDka0Hc64m3BG4OKG8nM (This pretrained model is not the best model, just for communicating)
+*  To download the vgg16 pretrained model which is used for the backbone. Please click https://drive.google.com/file/d/1lUhPKKj-BSOH7yQL0mOIavvrUbjydPp5/view?usp=sharing.
+*  To download the checkpoint of training epoch 14. Please ckick https://pan.baidu.com/s/1LS9CF5Zrm4gBj9p-HqJDSQ (Access Code: rkq8). 
 *  To download the HED-BSDS dataset. Please click https://pan.baidu.com/s/13be7JVWzbup_h-04axRrSw (Access Code: 2nzk) or https://vcl.ucsd.edu/hed/HED-BSDS.tar.
 *  To download the BSDS500 dataset. Please click https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.html.
 *  To evaluate the model, you can learn more information in https://www.jianshu.com/p/eda277063867.
